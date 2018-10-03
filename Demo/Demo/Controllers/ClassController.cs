@@ -24,28 +24,26 @@ namespace Demo.Controllers
             _unitOfWork = unitOfWork;
             _logger = logger;
             _emailer = emailer;
-        }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-        // GET: api/values
+        } 
+        [ProducesResponseType(200, Type = typeof(List<Lop>))]        
         [HttpGet]
         [Route("classes")]
         public IActionResult Get()
         {
-            var allClass = _unitOfWork.Lop.GetAllClassData();
-            return Ok(allClass);
+            List<Lop> allClass = _unitOfWork.Lop.GetAllClassData();            
+            return Ok(allClass);           
         }
         [HttpPost]
+        [ProducesResponseType(200, Type = typeof(bool))]
+        [ProducesResponseType(400)]
         [Route("add")]
-        public IActionResult AddClass([FromBody] Lop lop)
+        public IActionResult AddClass([FromBody] string lop)
         {
             if (ModelState.IsValid)
             {
-                if (lop == null )
-                    return BadRequest(ModelState);
-                var addCustomers = _unitOfWork.Lop.AddClass(lop);
+                if (string.IsNullOrWhiteSpace(lop))
+                    return BadRequest("lop cannot be null or empty");
+                bool addCustomers = _unitOfWork.Lop.AddClass(lop);               
                 return Ok(addCustomers);
             }
             else
@@ -53,5 +51,6 @@ namespace Demo.Controllers
                 return BadRequest(ModelState);
             }
         }
+        
     }
 }

@@ -21,25 +21,28 @@ namespace DAL.Repositories
             }
         }
 
-        public IEnumerable<Lop> GetAllClassData()
+        public List<Lop> GetAllClassData()
         {
-
             return _appContext.Lop
-                .OrderBy(l => l.L)
+                .OrderBy(l => l.L).DefaultIfEmpty()
                 .ToList();
         }
 
-        public bool AddClass(Lop lop)
+        public bool AddClass(string lop)
         {
             bool flag = false;
-            _appContext.Lop.Add(lop);
+
+            Lop lopModel = new Lop();
+            lopModel.L = lop;
+            _appContext.Lop.Add(lopModel);
+
             try
             {
                 _context.SaveChanges();
             }
             catch (Exception e)
             {
-                throw e;                
+                throw e;
             }
             flag = true;
             return flag;

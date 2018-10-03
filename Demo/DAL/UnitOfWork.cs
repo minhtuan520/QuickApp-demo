@@ -18,9 +18,9 @@ namespace DAL
         //readonly ApplicationDbContext _context;
         readonly tkbremake4DbContext _context;
 
-        ICustomerRepository _customers;
-        IProductRepository _products;
-        IOrdersRepository _orders;
+        //ICustomerRepository _customers;
+        //IProductRepository _products;
+        //IOrdersRepository _orders;
         IClassRepository _class;
 
 
