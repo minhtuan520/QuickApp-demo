@@ -14,24 +14,26 @@ namespace Demo.Controllers
     [Route("api/class")]
     public class ClassController : Controller
     {
+        #region Declare
         private IUnitOfWork _unitOfWork;
         readonly ILogger _logger;
-        readonly IEmailSender _emailer;
-
-
+        readonly IEmailSender _emailer; 
+        #endregion
         public ClassController(IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailer)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _emailer = emailer;
-        } 
-        [ProducesResponseType(200, Type = typeof(List<Lop>))]        
-        [HttpGet]
-        [Route("classes")]
-        public IActionResult Get()
+        }
+        #region API
+
+        [ProducesResponseType(200, Type = typeof(List<Lop>))]
+        [HttpGet("get")]
+        [Route("get")]
+        public IActionResult Get(int page)
         {
-            List<Lop> allClass = _unitOfWork.Lop.GetAllClassData();            
-            return Ok(allClass);           
+            List<Lop> allClass = _unitOfWork.Lop.GetAllClassData(page);
+            return Ok(allClass);
         }
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(bool))]
@@ -43,14 +45,15 @@ namespace Demo.Controllers
             {
                 if (string.IsNullOrWhiteSpace(lop))
                     return BadRequest("lop cannot be null or empty");
-                bool addCustomers = _unitOfWork.Lop.AddClass(lop);               
+                bool addCustomers = _unitOfWork.Lop.AddClass(lop);
                 return Ok(addCustomers);
             }
             else
             {
                 return BadRequest(ModelState);
             }
-        }
-        
+        } 
+        #endregion
+
     }
 }

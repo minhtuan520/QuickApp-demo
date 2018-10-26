@@ -17,11 +17,8 @@ namespace DAL
     {
         //readonly ApplicationDbContext _context;
         readonly tkbremake4DbContext _context;
-
-        //ICustomerRepository _customers;
-        //IProductRepository _products;
-        //IOrdersRepository _orders;
-        IClassRepository _class;
+      
+        private IClassRepository _class;
 
 
         public UnitOfWork(tkbremake4DbContext context)
@@ -39,52 +36,10 @@ namespace DAL
                 return _class;
             }
         }
-
-
-
-        //public ICustomerRepository Customers
+        
+        //public int SaveChanges()
         //{
-        //    get
-        //    {
-        //        if (_customers == null)
-        //            _customers = new CustomerRepository(_context);
-
-        //        return _customers;
-        //    }
+        //    return _context.SaveChanges();
         //}
-
-
-
-        //public IProductRepository Products
-        //{
-        //    get
-        //    {
-        //        if (_products == null)
-        //            _products = new ProductRepository(_context);
-
-        //        return _products;
-        //    }
-        //}
-
-
-
-        //public IOrdersRepository Orders
-        //{
-        //    get
-        //    {
-        //        if (_orders == null)
-        //            _orders = new OrdersRepository(_context);
-
-        //        return _orders;
-        //    }
-        //}
-
-
-
-
-        public int SaveChanges()
-        {
-            return _context.SaveChanges();
-        }
     }
 }

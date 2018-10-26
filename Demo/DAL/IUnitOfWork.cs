@@ -13,12 +13,9 @@ using System.Threading.Tasks;
 namespace DAL
 {
     public interface IUnitOfWork
-    {
-        //ICustomerRepository Customers { get; }
-        //IProductRepository Products { get; }
-        //IOrdersRepository Orders { get; }
+    {       
         IClassRepository Lop { get; }
 
-        int SaveChanges();
+        //int SaveChanges();
     }
 }

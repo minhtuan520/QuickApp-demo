@@ -8,7 +8,7 @@ namespace DAL.Repositories.Interfaces
 {
     public interface IClassRepository : IRepository<Lop>
     {       
-        List<Lop> GetAllClassData();
+        List<Lop> GetAllClassData(int page);
         bool AddClass(string lop);
     }
 }

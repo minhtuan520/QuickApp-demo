@@ -1,6 +1,7 @@
 ﻿using DAL.Models;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using PagedList.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,12 @@ namespace DAL.Repositories
             }
         }
 
-        public List<Lop> GetAllClassData()
-        {
-            return _appContext.Lop
-                .OrderBy(l => l.L).DefaultIfEmpty()
-                .ToList();
+        public List<Lop> GetAllClassData(int page)
+        {           
+            var list = from lop in _appContext.Lop select lop;
+            var onePageOfProducts = list.ToPagedList(page, 2);
+            return onePageOfProducts.ToList();
+
         }
 
         public bool AddClass(string lop)

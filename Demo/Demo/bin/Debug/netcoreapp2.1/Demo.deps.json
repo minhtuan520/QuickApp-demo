@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "165ad83b58d7a594ca783abcaaac023f9785a439"
+    "signature": "2612a7f881ed2ed658a460406528c882c68fbbc9"
   },
   "compilationOptions": {
     "defines": [
@@ -837,6 +837,17 @@
           "lib/netstandard2.0/OpenIddict.Validation.dll": {}
         }
       },
+      "PagedList.Core/1.17.4": {
+        "runtime": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
+        }
+      },
       "Portable.BouncyCastle/1.8.2": {
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
@@ -1582,7 +1593,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.1.2",
           "OpenIddict": "2.0.0-rc3-final",
-          "OpenIddict.EntityFrameworkCore": "2.0.0-rc3-final"
+          "OpenIddict.EntityFrameworkCore": "2.0.0-rc3-final",
+          "PagedList.Core": "1.17.4"
         },
         "runtime": {
           "DAL.dll": {}
@@ -4551,6 +4563,13 @@
       "sha512": "sha512-CzUxHj61ZgOBFXQeNVevQ1diz5pUYa/bMfn29jyHdkfGauFiKtFVWk5u1roRzKcAm25kOOqm/+R5RXOTYftE0w==",
       "path": "openiddict.validation/2.0.0-rc3-final",
       "hashPath": "openiddict.validation.2.0.0-rc3-final.nupkg.sha512"
+    },
+    "PagedList.Core/1.17.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Me111vdmlPp4GGeHqvNlnv4Raq1f1F77fDsJebuKsHCZXG4v4kMDzd5h1YVDv/Q7q9DuVgueR9mxp7eO7Yj4LA==",
+      "path": "pagedlist.core/1.17.4",
+      "hashPath": "pagedlist.core.1.17.4.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.8.2": {
       "type": "package",
