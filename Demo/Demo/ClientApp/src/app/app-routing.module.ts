@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
   { path: "about", component: AboutComponent, data: { title: "About Us" } },
   { path: "home", redirectTo: "/", pathMatch: "full" },
+  { path: "table", redirectTo: "/", pathMatch: "full" },
   { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } }
 ];
 
