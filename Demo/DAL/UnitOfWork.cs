@@ -24,6 +24,7 @@ namespace DAL
         private ITeacherRepository _teacher;
         private IRosterRepository _roster;
         private IConditionRepository _condition;
+        private IAccountRepository _account;
         #endregion
 
         public UnitOfWork(tkbremake4DbContext context)
@@ -80,6 +81,16 @@ namespace DAL
                     _condition = new ConditionRepository(_context);
 
                 return _condition;
+            }
+        }
+        public IAccountRepository TaiKhoan
+        {
+            get
+            {
+                if (_account == null)
+                    _account = new AccountRepository(_context);
+
+                return _account;
             }
         }
         #endregion

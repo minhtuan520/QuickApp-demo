@@ -19,6 +19,7 @@ namespace DAL
         ITeacherRepository GiaoVien { get; }
         IRosterRepository PhanCong { get; }
         IConditionRepository DieuKien { get; }
+        IAccountRepository TaiKhoan { get; }
         //int SaveChanges();
     }
 }

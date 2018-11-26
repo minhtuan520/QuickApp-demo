@@ -28,13 +28,13 @@ namespace DAL.Repositories
             }
         }
 
-        public List<Lop> GetAllClassData(int page)
-        {           
-            var list = from lop in _appContext.Lop select lop;
-            var onePageOfProducts = list.ToPagedList(page, 2);
-            return onePageOfProducts.ToList();
+        //public List<Lop> GetAllClassData(int page)
+        //{           
+        //    var list = from lop in _appContext.Lop select lop;
+        //    var onePageOfProducts = list.ToPagedList(page, 2);
+        //    return onePageOfProducts.ToList();
 
-        }
+        //}
 
         public bool AddClass(string lop)
         {
@@ -54,6 +54,17 @@ namespace DAL.Repositories
             return flag;
         }
 
-       
+        public bool DeleteClass()
+        {
+            try
+            {
+                _appContext.RemoveRange(from lop in _appContext.Lop select lop);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
