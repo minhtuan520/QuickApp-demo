@@ -15,7 +15,10 @@ namespace DAL
     public interface IUnitOfWork
     {       
         IClassRepository Lop { get; }
-
+        ISubjectRepository MonHoc { get; }
+        ITeacherRepository GiaoVien { get; }
+        IRosterRepository PhanCong { get; }
+        IConditionRepository DieuKien { get; }
         //int SaveChanges();
     }
 }

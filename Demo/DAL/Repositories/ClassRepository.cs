@@ -10,7 +10,13 @@ using System.Text;
 namespace DAL.Repositories
 {
     public class ClassRepository : Repository<Lop>, IClassRepository
-    {
+    {      
+        public List<Lop> GetClass()
+        {
+            var list = from lop in _appContext.Lop select lop;
+            return list.ToList();
+        }
+
         public ClassRepository(tkbremake4DbContext context) : base(context)
         { }
 
@@ -33,11 +39,9 @@ namespace DAL.Repositories
         public bool AddClass(string lop)
         {
             bool flag = false;
-
             Lop lopModel = new Lop();
             lopModel.L = lop;
             _appContext.Lop.Add(lopModel);
-
             try
             {
                 _context.SaveChanges();
@@ -49,5 +53,7 @@ namespace DAL.Repositories
             flag = true;
             return flag;
         }
+
+       
     }
 }

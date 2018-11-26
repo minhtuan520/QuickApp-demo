@@ -17,13 +17,13 @@ namespace Demo.Controllers
         #region Declare
         private IUnitOfWork _unitOfWork;
         readonly ILogger _logger;
-        readonly IEmailSender _emailer; 
+        //readonly IEmailSender _emailer; 
         #endregion
-        public ClassController(IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailer)
+        public ClassController(IUnitOfWork unitOfWork, ILogger<ClassController> logger)//, IEmailSender emailer)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _emailer = emailer;
+            //_emailer = emailer;
         }
         #region API
 
