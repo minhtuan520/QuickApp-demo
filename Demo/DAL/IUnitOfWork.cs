@@ -20,6 +20,7 @@ namespace DAL
         IRosterRepository PhanCong { get; }
         IConditionRepository DieuKien { get; }
         IAccountRepository TaiKhoan { get; }
+        IChangeRepository ThayDoi { get; }
         //int SaveChanges();
     }
 }

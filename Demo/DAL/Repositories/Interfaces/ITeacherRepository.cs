@@ -8,5 +8,6 @@ namespace DAL.Repositories.Interfaces
     public interface ITeacherRepository : IRepository<Giaovien>
     {
         List<Giaovien> GetTeacher();
+        bool DeleteTeacher();
     }
 }

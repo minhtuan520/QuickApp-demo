@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DAL.Models;
+using System;
 
 namespace DAL.Repositories
 {
@@ -11,6 +12,21 @@ namespace DAL.Repositories
         {
             var list = from monhoc in _appContext.Monhoc select monhoc;
             return list.ToList();
+        }
+
+        public bool DeleteSubject()
+        {
+            try
+            {
+                _appContext.RemoveRange(from mon in _appContext.Monhoc select mon);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
         }
 
         public SubjectRepository(tkbremake4DbContext context) : base(context)

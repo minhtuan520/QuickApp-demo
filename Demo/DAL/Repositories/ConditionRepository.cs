@@ -3,6 +3,7 @@ using DAL.Repositories.Interfaces;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace DAL.Repositories
 {
@@ -13,6 +14,21 @@ namespace DAL.Repositories
         {
             var list = from dieukien in _appContext.Dieukien select dieukien;
             return list.ToList();
+        }
+
+        public bool DeleteRoster()
+        {
+            try
+            {
+                _appContext.RemoveRange(from dk in _appContext.Dieukien select dk);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
         }
 
         public ConditionRepository(tkbremake4DbContext context) : base(context)

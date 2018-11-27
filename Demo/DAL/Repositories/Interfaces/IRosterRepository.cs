@@ -8,5 +8,6 @@ namespace DAL.Repositories.Interfaces
     public interface IRosterRepository : IRepository<Phancong>
     {
         List<Phancong> GetRoster();
+        bool DeleteRoster();
     }
 }

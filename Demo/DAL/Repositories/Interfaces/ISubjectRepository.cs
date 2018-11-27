@@ -8,5 +8,6 @@ namespace DAL.Repositories.Interfaces
     public interface ISubjectRepository: IRepository<Monhoc>
     {
         List<Monhoc> GetSubject();
+        bool DeleteSubject();
     }
 }

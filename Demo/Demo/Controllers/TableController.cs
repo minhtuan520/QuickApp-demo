@@ -99,34 +99,51 @@ namespace Demo.Controllers
         }
         [HttpPost]
         [Route("Delete")]
-        public IActionResult AddClass(string table)
+        public bool DeleteTable(string table)
         {
             if (ModelState.IsValid)
             {
+                bool result = false;
                 if (string.IsNullOrWhiteSpace(table))
-                    return BadRequest("table cannot be null or empty");
+                    return false;
                 switch (table)
                 {
                     case "LOP":
                         {
-                            return Ok(_unitOfWork.Lop.DeleteClass());
+                            result = _unitOfWork.Lop.DeleteClass();
+                            break;   
                         }
-                    //case "MONHOC": db.Monhoc.RemoveRange(from r in db.Monhoc select r); break;
-                    //case "GIAOVIEN": db.Giaovien.RemoveRange(from r in db.Giaovien select r); break;
-                    //case "PHANCONG": db.Phancong.RemoveRange(from r in db.Phancong select r); break;
-                    //case "DIEUKIEN": db.Dieukien.RemoveRange(from r in db.Dieukien select r); break;
+                    case "MONHOC":
+                        {
+                            result = _unitOfWork.MonHoc.DeleteSubject();
+                            break;
+                        }
+                    case "GIAOVIEN":
+                        {
+                            result = _unitOfWork.GiaoVien.DeleteTeacher();
+                            break;
+                        }
+                    case "PHANCONG":
+                        {
+                            result = _unitOfWork.PhanCong.DeleteRoster();
+                            break;
+                        }
+                    case "DIEUKIEN":
+                        {
+                            result = _unitOfWork.DieuKien.DeleteRoster();
+                            break;
+                        }
                     default:
-                        return BadRequest(false);
+                        return false;
                 }                
-                //string user = Request.Cookies["User"];
-                //if (user == null) user = "";
-                //db.Change.Add(new Change() { User = user, Action = "Delete", Target = _table, Time = System.DateTime.Now.ToString() });
-                //db.SaveChanges();
-                //return true;
+                string user = Request.Cookies["User"];
+                if (user == null) user = "";
+                _unitOfWork.ThayDoi.AddChange(user, table);
+                return result;
             }
             else
             {
-                return BadRequest(ModelState);
+                return false;
             }
         }
         #endregion

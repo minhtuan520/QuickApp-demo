@@ -15,6 +15,21 @@ namespace DAL.Repositories
             return list.ToList();
         }
 
+        public bool DeleteRoster()
+        {
+            try
+            {
+                _appContext.RemoveRange(from pc in _appContext.Phancong select pc);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
         public RosterRepository(tkbremake4DbContext context) : base(context)
         {
         }

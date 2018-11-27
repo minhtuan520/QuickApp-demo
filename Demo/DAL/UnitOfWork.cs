@@ -25,6 +25,7 @@ namespace DAL
         private IRosterRepository _roster;
         private IConditionRepository _condition;
         private IAccountRepository _account;
+        private IChangeRepository _change;
         #endregion
 
         public UnitOfWork(tkbremake4DbContext context)
@@ -32,7 +33,16 @@ namespace DAL
             _context = context;
         }
         #region extract
+        public IChangeRepository ThayDoi
+        {
+            get
+            {
+                if (_change == null)
+                    _change = new ChangeRepository(_context);
 
+                return _change;
+            }
+        }
         public IClassRepository Lop
         {
             get

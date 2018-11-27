@@ -59,10 +59,12 @@ namespace DAL.Repositories
             try
             {
                 _appContext.RemoveRange(from lop in _appContext.Lop select lop);
+                _appContext.SaveChanges();
             }
             catch (Exception ex)
             {
                 return false;
+                throw ex;
             }
             return true;
         }

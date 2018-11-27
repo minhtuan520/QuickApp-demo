@@ -85,7 +85,7 @@ namespace DAL
 
                 entity.Property(e => e.Time)
                     .HasColumnName("TIME")
-                    .HasMaxLength(16)
+                    .HasMaxLength(32)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Action)

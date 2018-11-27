@@ -5,9 +5,8 @@ using System.Text;
 
 namespace DAL.Repositories.Interfaces
 {
-    public interface IConditionRepository : IRepository<Dieukien>
+    public interface IChangeRepository : IRepository<Change>
     {
-        List<Dieukien> GetCondition();
-        bool DeleteRoster();
+        bool AddChange(string user, string table);
     }
 }
