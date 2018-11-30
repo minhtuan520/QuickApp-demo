@@ -8,6 +8,7 @@ namespace DAL.Repositories.Interfaces
     public interface IConditionRepository : IRepository<Dieukien>
     {
         List<Dieukien> GetCondition();
+        bool AddConditions(List<Dieukien> conditions);
         bool DeleteRoster();
     }
 }

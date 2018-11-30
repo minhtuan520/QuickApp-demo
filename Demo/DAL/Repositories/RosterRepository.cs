@@ -30,6 +30,21 @@ namespace DAL.Repositories
             return true;
         }
 
+        public bool AddRosters(List<Phancong> rosters)
+        {
+            try
+            {
+                _appContext.Phancong.AddRange(rosters);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
         public RosterRepository(tkbremake4DbContext context) : base(context)
         {
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL;
+using DAL.Models;
 using Demo.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace Demo.Controllers
     [Route("api/Table")]
     public class TableController : Controller
     {
-       // private readonly IHttpContextAccessor _httpContextAccessor;       
+        // private readonly IHttpContextAccessor _httpContextAccessor;       
         #region Declare
         private IUnitOfWork _unitOfWork;
         readonly ILogger _logger;
@@ -38,12 +39,12 @@ namespace Demo.Controllers
             ////Delete the cookie object  
             //Remove("Key");
             return View();
-            
+
         }
         public string GetCookie(string key)
         {
             return Request.Cookies[key];
-        }      
+        }
         public void Set(string key, string value, int? expireTime)
         {
             CookieOptions option = new CookieOptions();
@@ -52,7 +53,7 @@ namespace Demo.Controllers
             else
                 option.Expires = DateTime.Now.AddMilliseconds(10);
             Response.Cookies.Append(key, value, option);
-        }     
+        }
         public void Remove(string key)
         {
             Response.Cookies.Delete(key);
@@ -111,7 +112,7 @@ namespace Demo.Controllers
                     case "LOP":
                         {
                             result = _unitOfWork.Lop.DeleteClass();
-                            break;   
+                            break;
                         }
                     case "MONHOC":
                         {
@@ -135,10 +136,10 @@ namespace Demo.Controllers
                         }
                     default:
                         return false;
-                }                
+                }
                 string user = Request.Cookies["User"];
                 if (user == null) user = "";
-                _unitOfWork.ThayDoi.AddChange(user, table);
+                _unitOfWork.ThayDoi.AddChange("Delete",user, table);
                 return result;
             }
             else
@@ -146,6 +147,52 @@ namespace Demo.Controllers
                 return false;
             }
         }
-        #endregion
+        [HttpPost]
+        [Route("Delete")]
+        public bool Save(string table, string val)
+        {
+            bool result;
+            switch (table)
+            {
+                case "LOP":
+                    {
+                        List<Lop> Lops = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Lop>>(val);
+                        result = _unitOfWork.Lop.AddClass(Lops);
+                        break;
+                    }
+                case "MONHOC":
+                    {
+                        List<Monhoc> Monhocs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Monhoc>>(val);
+                        result = _unitOfWork.MonHoc.AddSubjects(Monhocs);
+                        break;
+                    }
+                case "GIAOVIEN":
+                    {
+                        List<Giaovien> Giaoviens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Giaovien>>(val);
+                        result = _unitOfWork.GiaoVien.AddTeachers(Giaoviens);
+                        break;
+                    }
+                case "PHANCONG":
+                    {
+                        List<Phancong> Phancongs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Phancong>>(val);
+                        result = _unitOfWork.PhanCong.AddRosters(Phancongs);
+                        break;
+                    }
+                case "DIEUKIEN":
+                    {
+                        List<Dieukien> Dieukiens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dieukien>>(val);
+                        result = _unitOfWork.DieuKien.AddConditions(Dieukiens);
+                        break;
+                    }
+                default:
+                    return false;
+            }
+            string user = Request.Cookies["User"];
+            if (user == null) user = "";
+            _unitOfWork.ThayDoi.AddChange("Save", user, table);
+            return result;           
+        }
+
     }
+    #endregion
 }

@@ -28,37 +28,29 @@ namespace DAL.Repositories
             }
         }
 
-        //public List<Lop> GetAllClassData(int page)
-        //{           
-        //    var list = from lop in _appContext.Lop select lop;
-        //    var onePageOfProducts = list.ToPagedList(page, 2);
-        //    return onePageOfProducts.ToList();
-
-        //}
-
-        public bool AddClass(string lop)
-        {
-            bool flag = false;
-            Lop lopModel = new Lop();
-            lopModel.L = lop;
-            _appContext.Lop.Add(lopModel);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            flag = true;
-            return flag;
-        }
+       
+    
 
         public bool DeleteClass()
         {
             try
             {
                 _appContext.RemoveRange(from lop in _appContext.Lop select lop);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
+        public bool AddClass(List<Lop> classes)
+        {
+            try
+            {
+                _appContext.Lop.AddRange(classes);
                 _appContext.SaveChanges();
             }
             catch (Exception ex)

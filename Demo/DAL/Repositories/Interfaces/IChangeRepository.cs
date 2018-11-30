@@ -7,6 +7,6 @@ namespace DAL.Repositories.Interfaces
 {
     public interface IChangeRepository : IRepository<Change>
     {
-        bool AddChange(string user, string table);
+        bool AddChange(string action,string user, string table);
     }
 }

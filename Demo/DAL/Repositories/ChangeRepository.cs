@@ -19,11 +19,11 @@ namespace DAL.Repositories
             }
         }
 
-        public bool AddChange(string user, string table)
+        public bool AddChange(string action, string user, string table)
         {
             try
             {
-                _appContext.Change.Add(new Change() { User = user, Action = "Delete", Target = table, Time = System.DateTime.Now.ToString() });
+                _appContext.Change.Add(new Change() { User = user, Action = action, Target = table, Time = System.DateTime.Now.ToString() });
                 _appContext.SaveChanges();
             }
             catch (Exception)

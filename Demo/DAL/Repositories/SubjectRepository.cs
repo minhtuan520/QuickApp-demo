@@ -29,6 +29,21 @@ namespace DAL.Repositories
             return true;
         }
 
+        public bool AddSubjects(List<Monhoc> subjects)
+        {
+            try
+            {
+                _appContext.Monhoc.AddRange(subjects);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
         public SubjectRepository(tkbremake4DbContext context) : base(context)
         {
         }

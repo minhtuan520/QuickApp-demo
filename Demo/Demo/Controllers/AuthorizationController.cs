@@ -27,6 +27,7 @@ using OpenIddict.Server;
 
 namespace Demo.Controllers
 {
+    [Route("api/Author")]
     public class AuthorizationController : Controller
     {
         private readonly IOptions<IdentityOptions> _identityOptions;

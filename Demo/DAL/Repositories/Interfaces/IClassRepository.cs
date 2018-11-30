@@ -10,7 +10,7 @@ namespace DAL.Repositories.Interfaces
     {       
         //List<Lop> GetAllClassData(int page);
         List<Lop> GetClass();
-        bool AddClass(string lop);
+        bool AddClass(List<Lop> classes);
         bool DeleteClass();
     }
 }

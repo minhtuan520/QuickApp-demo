@@ -31,6 +31,21 @@ namespace DAL.Repositories
             return true;
         }
 
+        public bool AddConditions(List<Dieukien> conditions)
+        {
+            try
+            {
+                _appContext.Dieukien.AddRange(conditions);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
         public ConditionRepository(tkbremake4DbContext context) : base(context)
         {
         }

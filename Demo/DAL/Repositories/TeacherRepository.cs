@@ -30,6 +30,21 @@ namespace DAL.Repositories
             return true;
         }
 
+        public bool AddTeachers(List<Giaovien> teachers)
+        {
+            try
+            {
+                _appContext.Giaovien.AddRange(teachers);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            return true;
+        }
+
         public TeacherRepository(tkbremake4DbContext context) : base(context)
         {
         }
