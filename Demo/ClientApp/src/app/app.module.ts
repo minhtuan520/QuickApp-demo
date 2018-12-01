@@ -62,6 +62,7 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
+import { LopsComponent } from './components/lops/lops.component';
 
 
 
@@ -110,7 +111,9 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     BootstrapToggleDirective,
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
-    GroupByPipe
+    GroupByPipe,
+
+    LopsComponent
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },

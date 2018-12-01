@@ -1,0 +1,44 @@
+2018-12-01T11:02:50.8775814+07:00 0HLIN87E80Q4Q:00000001 [INF] The token request was successfully extracted from the HTTP request: "{
+  \"username\": \"admin\",
+  \"password\": \"[removed for security reasons]\",
+  \"grant_type\": \"password\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}". (ebc01284)
+2018-12-01T11:02:50.9096776+07:00 0HLIN87E80Q4Q:00000001 [DBG] The token request validation process was partially skipped because the 'client_id' parameter was missing or empty. (fcec36a0)
+2018-12-01T11:02:50.9099390+07:00 0HLIN87E80Q4Q:00000001 [INF] The token request was successfully validated. (d7e51e65)
+2018-12-01T11:02:50.9244035+07:00 0HLIN87E80Q4Q:00000001 [DBG] The default token request handling was skipped from user code. (72afae05)
+2018-12-01T11:02:53.1208288+07:00 0HLIN87E80Q4Q:00000001 [INF] An ad hoc authorization was automatically created and associated with an unknown application: "3153cf49-1c6d-4714-8ef9-a13adc7755e0". (b5fe4ad7)
+2018-12-01T11:02:53.1701568+07:00 0HLIN87E80Q4Q:00000001 [DBG] '"AspNet.Identity.SecurityStamp"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:02:53.1702697+07:00 0HLIN87E80Q4Q:00000001 [DBG] '"fullname"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:02:53.1703251+07:00 0HLIN87E80Q4Q:00000001 [DBG] '"email"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:02:53.1703444+07:00 0HLIN87E80Q4Q:00000001 [DBG] '"phone"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:02:53.4290122+07:00 0HLIN87E80Q4Q:00000001 [DBG] '"AspNet.Identity.SecurityStamp"' was excluded from the identity token claims. (7dcd2335)
+2018-12-01T11:02:53.4841696+07:00 0HLIN87E80Q4Q:00000001 [INF] The token response was successfully returned: "{
+  \"token_type\": \"Bearer\",
+  \"access_token\": \"[removed for security reasons]\",
+  \"expires_in\": 3600,
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"id_token\": \"[removed for security reasons]\"
+}". (12d98310)
+2018-12-01T11:03:01.5020538+07:00 0HLIN87E80Q4R:00000001 [INF] The token request was successfully extracted from the HTTP request: "{
+  \"username\": \"admin\",
+  \"password\": \"[removed for security reasons]\",
+  \"grant_type\": \"password\",
+  \"scope\": \"openid email phone profile offline_access roles\"
+}". (ebc01284)
+2018-12-01T11:03:01.5022447+07:00 0HLIN87E80Q4R:00000001 [DBG] The token request validation process was partially skipped because the 'client_id' parameter was missing or empty. (fcec36a0)
+2018-12-01T11:03:01.5022755+07:00 0HLIN87E80Q4R:00000001 [INF] The token request was successfully validated. (d7e51e65)
+2018-12-01T11:03:01.5023425+07:00 0HLIN87E80Q4R:00000001 [DBG] The default token request handling was skipped from user code. (72afae05)
+2018-12-01T11:03:01.5662039+07:00 0HLIN87E80Q4R:00000001 [INF] An ad hoc authorization was automatically created and associated with an unknown application: "818dacf6-d14c-4682-866c-06d940bde4e8". (b5fe4ad7)
+2018-12-01T11:03:01.5666316+07:00 0HLIN87E80Q4R:00000001 [DBG] '"AspNet.Identity.SecurityStamp"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:03:01.5668053+07:00 0HLIN87E80Q4R:00000001 [DBG] '"fullname"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:03:01.5668661+07:00 0HLIN87E80Q4R:00000001 [DBG] '"email"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:03:01.5669096+07:00 0HLIN87E80Q4R:00000001 [DBG] '"phone"' was excluded from the access token claims. (ed8f369e)
+2018-12-01T11:03:01.6209178+07:00 0HLIN87E80Q4R:00000001 [DBG] '"AspNet.Identity.SecurityStamp"' was excluded from the identity token claims. (7dcd2335)
+2018-12-01T11:03:01.6213436+07:00 0HLIN87E80Q4R:00000001 [INF] The token response was successfully returned: "{
+  \"token_type\": \"Bearer\",
+  \"access_token\": \"[removed for security reasons]\",
+  \"expires_in\": 3600,
+  \"refresh_token\": \"[removed for security reasons]\",
+  \"id_token\": \"[removed for security reasons]\"
+}". (12d98310)
