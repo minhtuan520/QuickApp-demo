@@ -139,7 +139,7 @@ namespace Demo.Controllers
                 }
                 string user = Request.Cookies["User"];
                 if (user == null) user = "";
-                _unitOfWork.ThayDoi.AddChange("Delete",user, table);
+                _unitOfWork.ThayDoi.AddChange("Delete", user, table);
                 return result;
             }
             else
@@ -148,49 +148,59 @@ namespace Demo.Controllers
             }
         }
         [HttpPost]
-        [Route("Delete")]
-        public bool Save(string table, string val)
+        [Route("Save/{table}")]
+        public object Save(string table, [FromBody]object[] data)
         {
-            bool result;
-            switch (table)
+            string val = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+            Console.WriteLine(table + " = " + val);
+            bool result = false;
+            try
             {
-                case "LOP":
-                    {
-                        List<Lop> Lops = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Lop>>(val);
-                        result = _unitOfWork.Lop.AddClass(Lops);
-                        break;
-                    }
-                case "MONHOC":
-                    {
-                        List<Monhoc> Monhocs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Monhoc>>(val);
-                        result = _unitOfWork.MonHoc.AddSubjects(Monhocs);
-                        break;
-                    }
-                case "GIAOVIEN":
-                    {
-                        List<Giaovien> Giaoviens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Giaovien>>(val);
-                        result = _unitOfWork.GiaoVien.AddTeachers(Giaoviens);
-                        break;
-                    }
-                case "PHANCONG":
-                    {
-                        List<Phancong> Phancongs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Phancong>>(val);
-                        result = _unitOfWork.PhanCong.AddRosters(Phancongs);
-                        break;
-                    }
-                case "DIEUKIEN":
-                    {
-                        List<Dieukien> Dieukiens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dieukien>>(val);
-                        result = _unitOfWork.DieuKien.AddConditions(Dieukiens);
-                        break;
-                    }
-                default:
-                    return false;
+                DeleteTable(table);
+                switch (table)
+                {
+                    case "LOP":
+                        {
+                            List<Lop> Lops = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Lop>>(val);
+                            result = _unitOfWork.Lop.AddClass(Lops);
+                            break;
+                        }
+                    case "MONHOC":
+                        {
+                            List<Monhoc> Monhocs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Monhoc>>(val);
+                            result = _unitOfWork.MonHoc.AddSubjects(Monhocs);
+                            break;
+                        }
+                    case "GIAOVIEN":
+                        {
+                            List<Giaovien> Giaoviens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Giaovien>>(val);
+                            result = _unitOfWork.GiaoVien.AddTeachers(Giaoviens);
+                            break;
+                        }
+                    case "PHANCONG":
+                        {
+                            List<Phancong> Phancongs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Phancong>>(val);
+                            result = _unitOfWork.PhanCong.AddRosters(Phancongs);
+                            break;
+                        }
+                    case "DIEUKIEN":
+                        {
+                            List<Dieukien> Dieukiens = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dieukien>>(val);
+                            result = _unitOfWork.DieuKien.AddConditions(Dieukiens);
+                            break;
+                        }
+                    default:
+                        return false;
+                }
+                string user = Request.Cookies["User"];
+                if (user == null) user = "";
+                result = _unitOfWork.ThayDoi.AddChange("Save", user, table);
             }
-            string user = Request.Cookies["User"];
-            if (user == null) user = "";
-            _unitOfWork.ThayDoi.AddChange("Save", user, table);
-            return result;           
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return result;
         }
 
     }

@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
   { path: "about", component: AboutComponent, data: { title: "About Us" } },
   { path: "home", redirectTo: "/", pathMatch: "full" },
-  { path: "table/lop", component: LopsComponent, canActivate: [AuthGuard], data: { title: "Lớp" } },
+  { path: "table/lops", component: LopsComponent, canActivate: [AuthGuard], data: { title: "Lớp" } },
   { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } }
 ];
 
