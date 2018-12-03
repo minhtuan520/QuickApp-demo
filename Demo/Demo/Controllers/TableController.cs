@@ -60,7 +60,8 @@ namespace Demo.Controllers
         }
 
         #region API
-        [HttpGet("Get")]
+        [HttpGet]
+        [Route("Get/{table}")]
         public IActionResult Get(string table)
         {
             if (ModelState.IsValid)
@@ -71,7 +72,6 @@ namespace Demo.Controllers
                 {
                     case "LOP":
                         {
-
                             return Ok(_unitOfWork.Lop.GetClass());
                         }
                     case "MONHOC":
@@ -89,7 +89,7 @@ namespace Demo.Controllers
                     case "DIEUKIEN":
                         {
                             return Ok(_unitOfWork.DieuKien.GetCondition());
-                        }
+                        }                   
                     default: return BadRequest("ERROR");
                 }
             }
@@ -99,7 +99,7 @@ namespace Demo.Controllers
             }
         }
         [HttpPost]
-        [Route("Delete")]
+        [Route("Delete/{table}")]
         public bool DeleteTable(string table)
         {
             if (ModelState.IsValid)

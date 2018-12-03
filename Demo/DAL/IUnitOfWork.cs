@@ -21,6 +21,7 @@ namespace DAL
         IConditionRepository DieuKien { get; }
         IAccountRepository TaiKhoan { get; }
         IChangeRepository ThayDoi { get; }
+        ILogRepository Log { get; }
         //int SaveChanges();
     }
 }

@@ -14,8 +14,7 @@ using DAL.Repositories.Interfaces;
 namespace DAL
 {
     public class UnitOfWork : IUnitOfWork
-    {
-        //readonly ApplicationDbContext _context;
+    {      
         #region declare
         readonly tkbremake4DbContext _context;
 
@@ -26,6 +25,7 @@ namespace DAL
         private IConditionRepository _condition;
         private IAccountRepository _account;
         private IChangeRepository _change;
+        private ILogRepository _log;
         #endregion
 
         public UnitOfWork(tkbremake4DbContext context)
@@ -101,6 +101,16 @@ namespace DAL
                     _account = new AccountRepository(_context);
 
                 return _account;
+            }
+        }
+        public ILogRepository Log
+        {
+            get
+            {
+                if (_log == null)
+                    _log = new LogRepository(_context);
+
+                return _log;
             }
         }
         #endregion
