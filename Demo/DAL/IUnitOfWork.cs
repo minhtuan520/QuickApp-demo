@@ -22,6 +22,7 @@ namespace DAL
         IAccountRepository TaiKhoan { get; }
         IChangeRepository ThayDoi { get; }
         ILogRepository Log { get; }
+        IScheduleRepository TKB { get; }
         //int SaveChanges();
     }
 }

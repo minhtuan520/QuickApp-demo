@@ -26,6 +26,7 @@ namespace DAL
         private IAccountRepository _account;
         private IChangeRepository _change;
         private ILogRepository _log;
+        private IScheduleRepository _schedule;
         #endregion
 
         public UnitOfWork(tkbremake4DbContext context)
@@ -111,6 +112,16 @@ namespace DAL
                     _log = new LogRepository(_context);
 
                 return _log;
+            }
+        }
+        public IScheduleRepository TKB
+        {
+            get
+            {
+                if (_schedule == null)
+                    _schedule = new ScheduleRepository(_context);
+
+                return _schedule;
             }
         }
         #endregion
